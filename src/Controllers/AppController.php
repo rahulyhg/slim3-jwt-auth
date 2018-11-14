@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use Anddye\Auth\JwtAuth;
+use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -11,17 +13,18 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 class AppController
 {
     /**
-     * @param Request  $request
-     * @param Response $response
-     *
-     * @return Response
+     * @var JwtAuth
      */
-    public function adminAction(Request $request, Response $response): Response
+    private $jwtAuth;
+
+    /**
+     * AuthController constructor.
+     *
+     * @param ContainerInterface $container
+     */
+    public function __construct(ContainerInterface $container)
     {
-        return $response->withJson([
-            'controllerName' => 'AppController',
-            'controllerLocation' => __DIR__.'/AppController.php',
-        ]);
+        $this->jwtAuth = $container->get('jwtAuth');
     }
 
     /**
@@ -30,9 +33,11 @@ class AppController
      *
      * @return Response
      */
-    public function publicAction(Request $request, Response $response): Response
+    public function adminAction(Request $request, Response $response): Response
     {
         return $response->withJson([
+            'actionName' => 'adminAction',
+            'actionDescription' => 'Only an authenticated user with admin or superadmin roles can access this action!',
             'controllerName' => 'AppController',
             'controllerLocation' => __DIR__.'/AppController.php',
         ]);
@@ -47,6 +52,24 @@ class AppController
     public function privateAction(Request $request, Response $response): Response
     {
         return $response->withJson([
+            'actionName' => 'privateAction',
+            'actionDescription' => 'Only authenticated users can access this action!',
+            'controllerName' => 'AppController',
+            'controllerLocation' => __DIR__.'/AppController.php',
+        ]);
+    }
+
+    /**
+     * @param Request  $request
+     * @param Response $response
+     *
+     * @return Response
+     */
+    public function publicAction(Request $request, Response $response): Response
+    {
+        return $response->withJson([
+            'actionName' => 'publicAction',
+            'actionDescription' => 'Both authenticated and unauthenticated users can access this action!',
             'controllerName' => 'AppController',
             'controllerLocation' => __DIR__.'/AppController.php',
         ]);
