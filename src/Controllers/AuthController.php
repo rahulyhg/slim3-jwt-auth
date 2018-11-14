@@ -2,8 +2,8 @@
 
 namespace App\Controllers;
 
+use Anddye\Auth\JwtAuth;
 use App\Models\User;
-use App\Services\AuthService;
 use App\Services\HashService;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -15,14 +15,14 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 class AuthController
 {
     /**
-     * @var AuthService
-     */
-    private $authService;
-
-    /**
      * @var HashService
      */
     private $hashService;
+
+    /**
+     * @var JwtAuth
+     */
+    private $jwtAuth;
 
     /**
      * AuthController constructor.
@@ -31,8 +31,8 @@ class AuthController
      */
     public function __construct(ContainerInterface $container)
     {
-        $this->authService = $container->get('authService');
         $this->hashService = $container->get('hashService');
+        $this->jwtAuth = $container->get('jwtAuth');
     }
 
     /**
@@ -46,7 +46,7 @@ class AuthController
         $username = $request->getParam('username', '');
         $password = $request->getParam('password', '');
 
-        if (!$token = $this->authService->attempt($username, $password)) {
+        if (!$token = $this->jwtAuth->attempt($username, $password)) {
             return $response->withJson(['error' => 'Authentication failed!'], 401);
         }
 

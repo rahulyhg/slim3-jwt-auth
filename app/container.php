@@ -11,20 +11,6 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 $container = $app->getContainer();
 
-// Auth Service
-// ==============================================================================
-$container['authService'] = function ($container) {
-    $jwt = $container->settings['jwt'];
-
-    $authService = new AuthService($container);
-    $claimsFactory = new ClaimsFactory($jwt['claims']);
-    $jwtService = new FirebaseService($jwt['config']);
-    $factory = new Factory($claimsFactory, $jwtService);
-    $parser = new Parser($jwtService);
-
-    return new JwtAuth($authService, $factory, $parser);
-};
-
 // Database
 // ==============================================================================
 $container['db'] = function ($container) {
@@ -41,4 +27,18 @@ $container->get('db')->bootEloquent();
 // ==============================================================================
 $container['hashService'] = function () {
     return new HashService();
+};
+
+// JWT Auth
+// ==============================================================================
+$container['jwtAuth'] = function ($container) {
+    $jwt = $container->settings['jwt'];
+
+    $authService = new AuthService($container);
+    $claimsFactory = new ClaimsFactory($jwt['claims']);
+    $jwtService = new FirebaseService($jwt['config']);
+    $factory = new Factory($claimsFactory, $jwtService);
+    $parser = new Parser($jwtService);
+
+    return new JwtAuth($authService, $factory, $parser);
 };
