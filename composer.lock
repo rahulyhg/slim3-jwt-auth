@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andrewdyer/jwt-auth.git",
-                "reference": "b3adc34e335b7f9b15d4688970a009dd98ccf2f6"
+                "reference": "c18c1e953d41a7c2cca7fe3bda71ec598bdcb7bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andrewdyer/jwt-auth/zipball/b3adc34e335b7f9b15d4688970a009dd98ccf2f6",
-                "reference": "b3adc34e335b7f9b15d4688970a009dd98ccf2f6",
+                "url": "https://api.github.com/repos/andrewdyer/jwt-auth/zipball/c18c1e953d41a7c2cca7fe3bda71ec598bdcb7bb",
+                "reference": "c18c1e953d41a7c2cca7fe3bda71ec598bdcb7bb",
                 "shasum": ""
             },
             "require": {
@@ -49,7 +49,7 @@
                 "jwt",
                 "php"
             ],
-            "time": "2018-11-14T18:57:03+00:00"
+            "time": "2018-11-14T22:14:50+00:00"
         },
         {
             "name": "cakephp/cache",

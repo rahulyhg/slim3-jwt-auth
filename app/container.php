@@ -1,9 +1,6 @@
 <?php
 
-use Anddye\Auth\ClaimsFactory;
-use Anddye\Auth\Factory;
 use Anddye\Auth\JwtAuth;
-use Anddye\Auth\Parser;
 use Anddye\Services\FirebaseService;
 use App\Services\AuthService;
 use App\Services\HashService;
@@ -35,10 +32,7 @@ $container['jwtAuth'] = function ($container) {
     $jwt = $container->settings['jwt'];
 
     $authService = new AuthService($container);
-    $claimsFactory = new ClaimsFactory($jwt['claims']);
     $jwtService = new FirebaseService($jwt['config']);
-    $factory = new Factory($claimsFactory, $jwtService);
-    $parser = new Parser($jwtService);
 
-    return new JwtAuth($authService, $factory, $parser);
+    return new JwtAuth($authService, $jwtService, $jwt['claims']);
 };
