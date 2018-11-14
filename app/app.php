@@ -19,9 +19,6 @@ if (!getenv('APP_ENV')) {
 $app = new App([
     'settings' => [
         'displayErrorDetails' => 'dev' === getenv('APP_ENV'),
-        'app' => [
-            'name' => getenv('APP_NAME'),
-        ],
         'db' => [
             'driver' => 'mysql',
             'host' => getenv('DB_HOST'),
