@@ -5,6 +5,7 @@ namespace App\Services;
 use Anddye\Interfaces\AuthServiceInterface;
 use Anddye\Interfaces\JwtSubjectInterface;
 use App\Models\User;
+use Exception;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -49,10 +50,16 @@ class AuthService implements AuthServiceInterface
     /**
      * @param int $id
      *
-     * @return JwtSubjectInterface|null
+     * @return JwtSubjectInterface
+     *
+     * @throws Exception
      */
-    public function byId(int $id): ?JwtSubjectInterface
+    public function byId(int $id): JwtSubjectInterface
     {
-        return User::find($id);
+        if (!$user = User::find($id)) {
+            throw new Exception('User not found!');
+        }
+
+        return $user;
     }
 }
