@@ -43,14 +43,16 @@ class AuthController
      */
     public function loginAction(Request $request, Response $response): Response
     {
-        $username = $request->getParam('username', '');
-        $password = $request->getParam('password', '');
+        try {
+            $username = $request->getParam('username', '');
+            $password = $request->getParam('password', '');
 
-        if (!$token = $this->jwtAuth->attempt($username, $password)) {
-            return $response->withJson(['error' => 'Authentication failed!'], 401);
+            $token = $this->jwtAuth->attempt($username, $password);
+
+            return $response->withJson(['token' => $token]);
+        } catch (\Exception $ex) {
+            return $response->withJson(['error' => $ex->getMessage()], 401);
         }
-
-        return $response->withJson(['token' => $token]);
     }
 
     /**
