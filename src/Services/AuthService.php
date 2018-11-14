@@ -32,16 +32,18 @@ class AuthService implements AuthServiceInterface
      * @param string $username
      * @param string $password
      *
-     * @return JwtSubjectInterface|null
+     * @return JwtSubjectInterface
+     *
+     * @throws Exception
      */
-    public function byCredentials(string $username, string $password): ?JwtSubjectInterface
+    public function byCredentials(string $username, string $password): JwtSubjectInterface
     {
         if (!$user = User::where('username', $username)->first()) {
-            return null;
+            throw new Exception('User not found!');
         }
 
         if (!$this->hashService->verify($password.$user->salt, $user->password)) {
-            return null;
+            throw new Exception('Password not valid!');
         }
 
         return $user;
