@@ -29,11 +29,8 @@ class UserSeed extends AbstractSeed
     private function seedUser1(): self
     {
         $user = new User();
-        $user->email = 'admin@mail.com';
-        $user->forename = 'Andrew';
         $user->password = 'ea2959d87ea2974afcd45c6224d2e5322bc349db8e65f8a3c7460e2a8fb9a883';
         $user->salt = '>TrKAx^/<E^+aX!-5K|}pL!Po9(gH_Fr';
-        $user->surname = 'Dyer';
         $user->username = 'admin';
         $user->save();
 
@@ -46,11 +43,8 @@ class UserSeed extends AbstractSeed
     private function seedUser2(): self
     {
         $user = new User();
-        $user->email = 'janedoe@mail.com';
-        $user->forename = 'Jane';
         $user->password = 'ea2959d87ea2974afcd45c6224d2e5322bc349db8e65f8a3c7460e2a8fb9a883';
         $user->salt = '>TrKAx^/<E^+aX!-5K|}pL!Po9(gH_Fr';
-        $user->surname = 'Doe';
         $user->username = 'janedoe';
         $user->save();
 
@@ -63,11 +57,8 @@ class UserSeed extends AbstractSeed
     private function seedUser3(): self
     {
         $user = new User();
-        $user->email = 'johndoe@mail.com';
-        $user->forename = 'John';
         $user->password = 'ea2959d87ea2974afcd45c6224d2e5322bc349db8e65f8a3c7460e2a8fb9a883';
         $user->salt = '>TrKAx^/<E^+aX!-5K|}pL!Po9(gH_Fr';
-        $user->surname = 'Doe';
         $user->username = 'johndoe';
         $user->save();
 
