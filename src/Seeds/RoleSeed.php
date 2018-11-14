@@ -37,7 +37,7 @@ class RoleSeed extends AbstractSeed
     /**
      * @return RoleSeed
      */
-    private function seedRole1()
+    private function seedRole1(): self
     {
         $role = new Role();
         $role->name = 'admin';
@@ -52,7 +52,7 @@ class RoleSeed extends AbstractSeed
     /**
      * @return RoleSeed
      */
-    private function seedRole2()
+    private function seedRole2(): self
     {
         $role = new Role();
         $role->name = 'superadmin';
