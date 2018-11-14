@@ -65,16 +65,17 @@ class AuthController
     public function registerAction(Request $request, Response $response): Response
     {
         $username = $request->getParam('username');
+        $password = $request->getParam('password');
 
         if (User::where('username', $username)->first()) {
             return $response->withJson(['error' => 'Username already in use!'], 400);
         }
 
         $salt = $this->hashService->generate();
-        $password = $this->hashService->hash($request->getParam('password').$salt);
+        $hashedPassword = $this->hashService->hash($password.$salt);
 
         $user = new User();
-        $user->password = $password;
+        $user->password = $hashedPassword;
         $user->salt = $salt;
         $user->username = $username;
         $user->save();
