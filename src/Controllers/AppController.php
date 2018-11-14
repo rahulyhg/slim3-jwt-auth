@@ -16,6 +16,20 @@ class AppController
      *
      * @return Response
      */
+    public function adminAction(Request $request, Response $response): Response
+    {
+        return $response->withJson([
+            'controllerName' => 'AppController',
+            'controllerLocation' => __DIR__.'/AppController.php',
+        ]);
+    }
+
+    /**
+     * @param Request  $request
+     * @param Response $response
+     *
+     * @return Response
+     */
     public function publicAction(Request $request, Response $response): Response
     {
         return $response->withJson([
