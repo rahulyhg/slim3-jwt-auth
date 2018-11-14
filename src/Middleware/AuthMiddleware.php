@@ -2,6 +2,7 @@
 
 namespace App\Middleware;
 
+use Exception;
 use App\Services\AuthService;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -39,10 +40,11 @@ class AuthMiddleware
         if (!$header = $this->getAuthorizationHeader($request)) {
             return $response->withStatus(401);
         }
+
         try {
             $this->authService->authenticate($header);
-        } catch (Exception $e) {
-            return $response->withJson(['message' => $e->getMessage()], 401);
+        } catch (Exception $ex) {
+            return $response->withJson(['message' => $ex->getMessage()], 401);
         }
 
         return $next($request, $response);
