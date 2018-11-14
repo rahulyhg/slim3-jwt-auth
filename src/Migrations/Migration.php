@@ -19,7 +19,7 @@ class Migration extends AbstractMigration
     /**
      * Create a schema builder instance.
      */
-    public function init()
+    public function init(): void
     {
         $this->schema = (new Capsule())->schema();
     }
