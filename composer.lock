@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7a09eb64e77463d20b6e932eb90b2a96",
+    "content-hash": "41a409c6083ad40eecd915efb39e5b6a",
     "packages": [
         {
             "name": "andrewdyer/jwt-auth",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andrewdyer/jwt-auth.git",
-                "reference": "e74f2492e3fe2d8485ab66f4281fc23556f3649b"
+                "reference": "b3adc34e335b7f9b15d4688970a009dd98ccf2f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andrewdyer/jwt-auth/zipball/e74f2492e3fe2d8485ab66f4281fc23556f3649b",
-                "reference": "e74f2492e3fe2d8485ab66f4281fc23556f3649b",
+                "url": "https://api.github.com/repos/andrewdyer/jwt-auth/zipball/b3adc34e335b7f9b15d4688970a009dd98ccf2f6",
+                "reference": "b3adc34e335b7f9b15d4688970a009dd98ccf2f6",
                 "shasum": ""
             },
             "require": {
@@ -40,7 +40,7 @@
                     "name": "Andrew Dyer",
                     "email": "andrewdyer@outlook.com",
                     "homepage": "http://andrewdyer.rocks",
-                    "role": "Developer"
+                    "role": "developer"
                 }
             ],
             "homepage": "https://github.com/andrewdyer/jwt-auth",
@@ -49,7 +49,7 @@
                 "jwt",
                 "php"
             ],
-            "time": "2018-10-07T11:05:18+00:00"
+            "time": "2018-11-14T18:57:03+00:00"
         },
         {
             "name": "cakephp/cache",
