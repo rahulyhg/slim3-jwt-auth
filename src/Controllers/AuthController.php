@@ -5,6 +5,7 @@ namespace App\Controllers;
 use Anddye\Auth\JwtAuth;
 use App\Models\User;
 use App\Services\HashService;
+use Exception;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -50,7 +51,7 @@ class AuthController
             $token = $this->jwtAuth->attempt($username, $password);
 
             return $response->withJson(['token' => $token]);
-        } catch (\Exception $ex) {
+        } catch (Exception $ex) {
             return $response->withJson(['error' => $ex->getMessage()], 401);
         }
     }
