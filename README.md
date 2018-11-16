@@ -11,6 +11,8 @@
 
 A starter API which uses JSON web tokens for authenticating users.
 
+## Index
+
 * [License](#license)
 * [Requirements](#requirements)
 * [Installation](#installation)
@@ -37,8 +39,6 @@ composer create-project andrewdyer/slim3-jwt-auth project_name
 * Activate mod_rewrite, route all traffic to application's `/public` directory.
 * Set up the project environment. Please see [JWT Auth](https://github.com/andrewdyer/jwt-auth#setting-up-the-jwt-provider) for JWT configuration options.
 * Run all available migrations.
-
-## See Also
 
 ## Useful Links
 * [Slim Framework](https://www.slimframework.com)
