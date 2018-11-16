@@ -21,4 +21,7 @@ return [
         'default_migration_table' => 'migrations',
     ],
     'migration_base_class' => "App\Migrations\Migration",
+    'templates' => [
+        'file' => 'src/Migrations/Migration.php.dist',
+    ],
 ];
