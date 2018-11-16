@@ -1,5 +1,16 @@
 # Slim3 JWT Auth
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1e136d974fec47c3a152b4c5267326a0)](https://www.codacy.com/app/andrewdyer/slim3-jwt-auth?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=andrewdyer/slim3-jwt-auth&amp;utm_campaign=Badge_Grade)
+[![Latest Stable Version](https://poser.pugx.org/andrewdyer/slim3-jwt-auth/v/stable)](https://packagist.org/packages/andrewdyer/slim3-jwt-auth)
+[![Latest Unstable Version](https://poser.pugx.org/andrewdyer/slim3-jwt-auth/v/unstable)](https://packagist.org/packages/andrewdyer/slim3-jwt-auth)
+[![License](https://poser.pugx.org/andrewdyer/slim3-jwt-auth/license)](https://packagist.org/packages/andrewdyer/slim3-jwt-auth)
+[![Total Downloads](https://poser.pugx.org/andrewdyer/slim3-jwt-auth/downloads)](https://packagist.org/packages/andrewdyer/slim3-jwt-auth)
+[![Daily Downloads](https://poser.pugx.org/andrewdyer/slim3-jwt-auth/d/daily)](https://packagist.org/packages/andrewdyer/slim3-jwt-auth)
+[![Monthly Downloads](https://poser.pugx.org/andrewdyer/slim3-jwt-auth/d/monthly)](https://packagist.org/packages/andrewdyer/slim3-jwt-auth)
+[![composer.lock](https://poser.pugx.org/andrewdyer/slim3-jwt-auth/composerlock)](https://packagist.org/packages/andrewdyer/slim3-jwt-auth)
+
+A starter API which uses JSON web tokens for authenticating users.
+
 * [License](#license)
 * [Requirements](#requirements)
 * [Installation](#installation)
@@ -24,11 +35,14 @@ composer create-project andrewdyer/slim3-jwt-auth project_name
 
 ## Configuration
 * Activate mod_rewrite, route all traffic to application's `/public` directory.
-* Set up the project environment.
+* Set up the project environment. Please see [JWT Auth](https://github.com/andrewdyer/jwt-auth#setting-up-the-jwt-provider) for JWT configuration options.
 * Run all available migrations.
+
+## See Also
 
 ## Useful Links
 * [Slim Framework](https://www.slimframework.com)
+* [JWT Auth](https://github.com/andrewdyer/jwt-auth)
 * [Illuminate Database](https://github.com/illuminate/database)
 * [Phinx Migrations](https://book.cakephp.org/3.0/en/phinx.html)
 * [Phinx - Writing Migrations](http://docs.phinx.org/en/latest/migrations.html)
