@@ -1,7 +1,7 @@
 <?php
 
 use Anddye\Auth\JwtAuth;
-use Anddye\Services\FirebaseService;
+use Anddye\Providers\FirebaseProvider;
 use App\Services\AuthService;
 use App\Services\HashService;
 use Illuminate\Database\Capsule\Manager as Capsule;
@@ -32,7 +32,7 @@ $container['jwtAuth'] = function ($container) {
     $jwt = $container->settings['jwt'];
 
     $authService = new AuthService($container);
-    $jwtService = new FirebaseService($jwt['config']);
+    $firebaseProvider = new FirebaseProvider($jwt['config']);
 
-    return new JwtAuth($authService, $jwtService, $jwt['claims']);
+    return new JwtAuth($authService, $firebaseProvider, $jwt['claims']);
 };
