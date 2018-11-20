@@ -4,12 +4,12 @@ namespace App\Migrations;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Database\Schema\MySqlBuilder as Schema;
-use Phinx\Migration\AbstractMigration;
+use Phinx\Migration\AbstractMigration as Migration;
 
 /**
- * Class Migration.
+ * Class AbstractMigration.
  */
-class Migration extends AbstractMigration
+class AbstractMigration extends Migration
 {
     /**
      * @var Schema

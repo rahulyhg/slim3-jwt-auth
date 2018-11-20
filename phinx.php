@@ -20,7 +20,7 @@ return [
         ],
         'default_migration_table' => 'migrations',
     ],
-    'migration_base_class' => "App\Migrations\Migration",
+    'migration_base_class' => "App\Migrations\AbstractMigration",
     'templates' => [
         'file' => 'src/Migrations/Migration.php.dist',
     ],
