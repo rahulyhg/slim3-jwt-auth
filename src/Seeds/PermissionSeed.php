@@ -32,7 +32,7 @@ class PermissionSeed extends AbstractSeed
     private function seedPermission1(): self
     {
         $permission = new Permission();
-        $permission->name = 'delete users';
+        $permission->name = Permission::DELETE_USERS;
         $permission->description = '';
         $permission->save();
 
@@ -45,7 +45,7 @@ class PermissionSeed extends AbstractSeed
     private function seedPermission2(): self
     {
         $permission = new Permission();
-        $permission->name = 'manage roles';
+        $permission->name = Permission::MANAGE_ROLES;
         $permission->description = '';
         $permission->save();
 
@@ -58,7 +58,7 @@ class PermissionSeed extends AbstractSeed
     private function seedPermission3(): self
     {
         $permission = new Permission();
-        $permission->name = 'edit users';
+        $permission->name = Permission::EDIT_USERS;
         $permission->description = '';
         $permission->save();
 
@@ -71,7 +71,7 @@ class PermissionSeed extends AbstractSeed
     private function seedPermission4(): self
     {
         $permission = new Permission();
-        $permission->name = 'edit admins';
+        $permission->name = Permission::EDIT_ADMINS;
         $permission->description = '';
         $permission->save();
 
@@ -84,7 +84,7 @@ class PermissionSeed extends AbstractSeed
     private function seedPermission5(): self
     {
         $permission = new Permission();
-        $permission->name = 'view admin pages';
+        $permission->name = Permission::VIEW_ADMIN_PAGES;
         $permission->description = '';
         $permission->save();
 
@@ -97,7 +97,7 @@ class PermissionSeed extends AbstractSeed
     private function seedPermission6(): self
     {
         $permission = new Permission();
-        $permission->name = 'make admin';
+        $permission->name = Permission::MAKE_ADMIN;
         $permission->description = '';
         $permission->save();
 
