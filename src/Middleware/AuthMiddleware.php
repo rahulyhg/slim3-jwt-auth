@@ -30,7 +30,7 @@ class AuthMiddleware extends AbstractMiddleware
 
         try {
             list($header) = $header;
-            $this->jwtAuth()->authenticate($header);
+            $this->getAuth()->authenticate($header);
         } catch (Exception $ex) {
             return $response->withJson(['error' => $ex->getMessage()], 401);
         }

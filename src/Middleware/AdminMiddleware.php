@@ -26,8 +26,7 @@ class AdminMiddleware extends AbstractMiddleware
      */
     public function handle(Request $request, Response $response, callable $next): Response
     {
-        $user = $this->jwtAuth()->user();
-        if ($user->isGranted('admin') or $user->isGranted('superadmin') or $user->isPermitted('view admin pages')) {
+        if ($this->getUser()->isGranted('admin') or $this->getUser()->isGranted('superadmin') or $this->getUser()->isPermitted('view admin pages')) {
             $response = $next($request, $response);
 
             return $response;

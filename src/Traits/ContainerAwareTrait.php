@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use Anddye\Auth\JwtAuth;
+use Anddye\Interfaces\JwtSubjectInterface;
 use App\Services\HashService;
 use Psr\Container\ContainerInterface;
 
@@ -15,6 +16,16 @@ trait ContainerAwareTrait
      * @var ContainerInterface
      */
     private $container;
+
+    /**
+     * Explicitly fetches the jwt auth instance from the container.
+     *
+     * @return JwtAuth
+     */
+    public function getAuth(): JwtAuth
+    {
+        return $this->container->get('jwtAuth');
+    }
 
     /**
      * Get the application dependency container instance.
@@ -31,19 +42,17 @@ trait ContainerAwareTrait
      *
      * @return HashService
      */
-    public function hashService(): HashService
+    public function getHash(): HashService
     {
         return $this->container->get('hashService');
     }
 
     /**
-     * Explicitly fetches the jwt auth instance from the container.
-     *
-     * @return JwtAuth
+     * @return JwtSubjectInterface|null
      */
-    public function jwtAuth(): JwtAuth
+    public function getUser(): ?JwtSubjectInterface
     {
-        return $this->container->get('jwtAuth');
+        return $this->getAuth()->user();
     }
 
     /**
