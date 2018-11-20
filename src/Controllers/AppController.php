@@ -2,31 +2,14 @@
 
 namespace App\Controllers;
 
-use Anddye\Auth\JwtAuth;
-use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 /**
  * Class AppController.
  */
-class AppController
+class AppController extends AbstractController
 {
-    /**
-     * @var JwtAuth
-     */
-    private $jwtAuth;
-
-    /**
-     * AuthController constructor.
-     *
-     * @param ContainerInterface $container
-     */
-    public function __construct(ContainerInterface $container)
-    {
-        $this->jwtAuth = $container->get('jwtAuth');
-    }
-
     /**
      * @param Request  $request
      * @param Response $response

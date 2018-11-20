@@ -2,40 +2,16 @@
 
 namespace App\Controllers;
 
-use Anddye\Auth\JwtAuth;
 use App\Models\User;
-use App\Services\HashService;
 use Exception;
-use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 /**
  * Class AuthController.
  */
-class AuthController
+class AuthController extends AbstractController
 {
-    /**
-     * @var HashService
-     */
-    private $hashService;
-
-    /**
-     * @var JwtAuth
-     */
-    private $jwtAuth;
-
-    /**
-     * AuthController constructor.
-     *
-     * @param ContainerInterface $container
-     */
-    public function __construct(ContainerInterface $container)
-    {
-        $this->hashService = $container->get('hashService');
-        $this->jwtAuth = $container->get('jwtAuth');
-    }
-
     /**
      * @param Request  $request
      * @param Response $response
@@ -48,7 +24,7 @@ class AuthController
             $username = $request->getParam('username', '');
             $password = $request->getParam('password', '');
 
-            $token = $this->jwtAuth->attempt($username, $password);
+            $token = $this->jwtAuth()->attempt($username, $password);
 
             return $response->withJson(['token' => $token]);
         } catch (Exception $ex) {
@@ -71,8 +47,8 @@ class AuthController
             return $response->withJson(['error' => 'Username already in use!'], 400);
         }
 
-        $salt = $this->hashService->generate();
-        $hashedPassword = $this->hashService->hash($password.$salt);
+        $salt = $this->hashService()->generate();
+        $hashedPassword = $this->hashService()->hash($password.$salt);
 
         $user = new User();
         $user->password = $hashedPassword;
