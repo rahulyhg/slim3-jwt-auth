@@ -11,6 +11,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Role extends Model
 {
     /**
+     * Admin role name.
+     */
+    const ADMIN = 'admin';
+
+    /**
+     * Superadmin role name.
+     */
+    const SUPERADMIN = 'superadmin';
+
+    /**
      * @return BelongsToMany
      */
     public function permissions(): BelongsToMany

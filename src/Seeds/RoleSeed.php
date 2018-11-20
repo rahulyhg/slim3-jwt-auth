@@ -40,7 +40,7 @@ class RoleSeed extends AbstractSeed
     private function seedRole1(): self
     {
         $role = new Role();
-        $role->name = 'admin';
+        $role->name = Role::ADMIN;
         $role->description = '';
         $role->save();
 
@@ -55,7 +55,7 @@ class RoleSeed extends AbstractSeed
     private function seedRole2(): self
     {
         $role = new Role();
-        $role->name = 'superadmin';
+        $role->name = Role::SUPERADMIN;
         $role->description = '';
         $role->save();
 
