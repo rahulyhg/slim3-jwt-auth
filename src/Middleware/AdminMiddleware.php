@@ -2,6 +2,8 @@
 
 namespace App\Middleware;
 
+use App\Models\Permission;
+use App\Models\Role;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\NotFoundException;
@@ -12,9 +14,8 @@ use Slim\Exception\NotFoundException;
 class AdminMiddleware extends AbstractMiddleware
 {
     /**
-     * Manipulates the Request and Response objects. You MUST return an instance of
-     * \Psr\Http\Message\ResponseInterface and should invoke the next middleware,
-     * passing it Request and Response objects as arguments.
+     * Check to ensure the admin has either admin or super admin role or can view admin pages. Throw a not found
+     * exception if these checks fail.
      *
      * @param Request  $request
      * @param Response $response
@@ -26,7 +27,11 @@ class AdminMiddleware extends AbstractMiddleware
      */
     public function handle(Request $request, Response $response, callable $next): Response
     {
-        if ($this->getUser()->isGranted('admin') or $this->getUser()->isGranted('superadmin') or $this->getUser()->isPermitted('view admin pages')) {
+        if (
+            $this->getUser()->isGranted(Role::ADMIN) or
+            $this->getUser()->isGranted(Role::SUPERADMIN) or
+            $this->getUser()->isPermitted(Permission::VIEW_ADMIN_PAGES)
+        ) {
             $response = $next($request, $response);
 
             return $response;
