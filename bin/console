@@ -1,0 +1,14 @@
+#!/usr/bin/evn php
+
+<?php
+
+use Symfony\Component\Console\Application as Console;
+
+require_once __DIR__.'/../app/app.php';
+require_once __DIR__.'/../app//container.php';
+
+$console = new Console();
+
+require_once __DIR__.'/../app//commands.php';
+
+$console->run();

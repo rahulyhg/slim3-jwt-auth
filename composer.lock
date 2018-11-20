@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f1a0702f2d1884659525d8e12155479",
+    "content-hash": "c1ca07ef95c3e90fb71a0243633588bd",
     "packages": [
         {
             "name": "andrewdyer/jwt-auth",

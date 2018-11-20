@@ -22,7 +22,8 @@
         "slim/slim": "^3.11",
         "illuminate/database": "^5.7",
         "robmorgan/phinx": "^0.10.6",
-        "andrewdyer/jwt-auth": "^0.1.0"
+        "andrewdyer/jwt-auth": "^0.1.0",
+        "symfony/console": "^4.1"
     },
     "require-dev": {
         "symfony/dotenv": "^4.1",
