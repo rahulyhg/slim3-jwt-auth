@@ -2,40 +2,27 @@
 
 namespace App\Middleware;
 
-use Anddye\Auth\JwtAuth;
 use Exception;
-use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 /**
  * Class AuthMiddleware.
  */
-class AuthMiddleware
+class AuthMiddleware extends AbstractMiddleware
 {
     /**
-     * @var JwtAuth
-     */
-    private $jwtAuth;
-
-    /**
-     * AuthMiddleware constructor.
+     * Manipulates the Request and Response objects. You MUST return an instance of
+     * \Psr\Http\Message\ResponseInterface and should invoke the next middleware,
+     * passing it Request and Response objects as arguments.
      *
-     * @param ContainerInterface $container
-     */
-    public function __construct(ContainerInterface $container)
-    {
-        $this->jwtAuth = $container->get('jwtAuth');
-    }
-
-    /**
      * @param Request  $request
      * @param Response $response
      * @param callable $next
      *
      * @return Response
      */
-    public function __invoke(Request $request, Response $response, callable $next): Response
+    public function handle(Request $request, Response $response, callable $next): Response
     {
         if (!($header = $request->getHeader('Authorization'))) {
             return $response->withJson(['error' => 'No token provided!'], 401);
@@ -43,7 +30,7 @@ class AuthMiddleware
 
         try {
             list($header) = $header;
-            $this->jwtAuth->authenticate($header);
+            $this->jwtAuth()->authenticate($header);
         } catch (Exception $ex) {
             return $response->withJson(['error' => $ex->getMessage()], 401);
         }
