@@ -24,7 +24,7 @@ class AuthController extends AbstractController
             $username = $request->getParam('username', '');
             $password = $request->getParam('password', '');
 
-            $token = $this->jwtAuth()->attempt($username, $password);
+            $token = $this->getAuth()->attempt($username, $password);
 
             return $response->withJson(['token' => $token]);
         } catch (Exception $ex) {
@@ -47,8 +47,8 @@ class AuthController extends AbstractController
             return $response->withJson(['error' => 'Username already in use!'], 400);
         }
 
-        $salt = $this->hashService()->generate();
-        $hashedPassword = $this->hashService()->hash($password.$salt);
+        $salt = $this->getHash()->generate();
+        $hashedPassword = $this->getHash()->hash($password.$salt);
 
         $user = new User();
         $user->password = $hashedPassword;
