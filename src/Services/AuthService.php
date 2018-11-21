@@ -29,6 +29,8 @@ class AuthService implements AuthServiceInterface
     }
 
     /**
+     * Find a user with valid username and password.
+     *
      * @param string $username
      * @param string $password
      *
@@ -50,6 +52,8 @@ class AuthService implements AuthServiceInterface
     }
 
     /**
+     * Find a user by their ID.
+     *
      * @param int $id
      *
      * @return JwtSubjectInterface
