@@ -10,6 +10,8 @@ class HashService
     const CHARSET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/\][{}\";:?.>,<!@#$%^&*()-_=+|";
 
     /**
+     * Generates a random string of a specified length.
+     *
      * @param int $length optional
      *
      * @return string
@@ -25,6 +27,8 @@ class HashService
     }
 
     /**
+     * Generate a hash value.
+     *
      * @param string $string
      *
      * @return string
@@ -35,6 +39,8 @@ class HashService
     }
 
     /**
+     * Checks if the given hash matches a valid hash.
+     *
      * @param string $givenHash
      * @param string $validHash
      *
