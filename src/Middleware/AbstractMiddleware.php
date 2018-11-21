@@ -27,8 +27,7 @@ abstract class AbstractMiddleware implements ContainerAwareInterface, Middleware
     }
 
     /**
-     * Invokable class that executes the handle method to manipulate the
-     * Request and Response objects.
+     * Invokable class that executes the handle method to manipulate the Request and Response objects.
      *
      * @param Request  $request
      * @param Response $response
