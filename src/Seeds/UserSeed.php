@@ -18,50 +18,28 @@ class UserSeed extends AbstractSeed
      */
     public function run()
     {
-        $this->seedUser1()
-            ->seedUser2()
-            ->seedUser3();
-    }
-
-    /**
-     * @return UserSeed
-     */
-    private function seedUser1(): self
-    {
-        $user = new User();
-        $user->password = 'ea2959d87ea2974afcd45c6224d2e5322bc349db8e65f8a3c7460e2a8fb9a883';
-        $user->salt = '>TrKAx^/<E^+aX!-5K|}pL!Po9(gH_Fr';
-        $user->username = 'admin';
-        $user->save();
-
-        return $this;
-    }
-
-    /**
-     * @return UserSeed
-     */
-    private function seedUser2(): self
-    {
-        $user = new User();
-        $user->password = 'ea2959d87ea2974afcd45c6224d2e5322bc349db8e65f8a3c7460e2a8fb9a883';
-        $user->salt = '>TrKAx^/<E^+aX!-5K|}pL!Po9(gH_Fr';
-        $user->username = 'janedoe';
-        $user->save();
-
-        return $this;
-    }
-
-    /**
-     * @return UserSeed
-     */
-    private function seedUser3(): self
-    {
-        $user = new User();
-        $user->password = 'ea2959d87ea2974afcd45c6224d2e5322bc349db8e65f8a3c7460e2a8fb9a883';
-        $user->salt = '>TrKAx^/<E^+aX!-5K|}pL!Po9(gH_Fr';
-        $user->username = 'johndoe';
-        $user->save();
-
-        return $this;
+        User::insert([
+            [
+                'password' => 'ea2959d87ea2974afcd45c6224d2e5322bc349db8e65f8a3c7460e2a8fb9a883',
+                'salt' => '>TrKAx^/<E^+aX!-5K|}pL!Po9(gH_Fr',
+                'username' => 'admin',
+                'created_on' => '2018-10-01 13:23:10',
+                'updated_on' => '2018-10-01 13:23:10',
+            ],
+            [
+                'password' => 'ea2959d87ea2974afcd45c6224d2e5322bc349db8e65f8a3c7460e2a8fb9a883',
+                'salt' => '>TrKAx^/<E^+aX!-5K|}pL!Po9(gH_Fr',
+                'username' => 'janedoe',
+                'created_on' => '2018-10-01 13:23:10',
+                'updated_on' => '2018-10-01 13:23:10',
+            ],
+            [
+                'password' => 'ea2959d87ea2974afcd45c6224d2e5322bc349db8e65f8a3c7460e2a8fb9a883',
+                'salt' => '>TrKAx^/<E^+aX!-5K|}pL!Po9(gH_Fr',
+                'username' => 'johndoe',
+                'created_on' => '2018-10-01 13:23:10',
+                'updated_on' => '2018-10-01 13:23:10',
+            ],
+        ]);
     }
 }
