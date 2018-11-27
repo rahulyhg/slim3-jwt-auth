@@ -9,6 +9,14 @@ use Illuminate\Database\Schema\Blueprint;
 class CreateUserRolesTable extends Migration
 {
     /**
+     * Migrate Down.
+     */
+    public function down()
+    {
+        $this->schema()->drop('users_roles');
+    }
+
+    /**
      * Migrate Up.
      */
     public function up()
@@ -21,13 +29,5 @@ class CreateUserRolesTable extends Migration
             $table->foreign('role_id')->references('id')->on('roles');
             $table->timestamps();
         });
-    }
-
-    /**
-     * Migrate Down.
-     */
-    public function down()
-    {
-        $this->schema()->drop('users_roles');
     }
 }

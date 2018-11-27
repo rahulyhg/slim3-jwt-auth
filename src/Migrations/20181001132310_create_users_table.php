@@ -9,6 +9,14 @@ use Illuminate\Database\Schema\Blueprint;
 class CreateUsersTable extends Migration
 {
     /**
+     * Migrate Down.
+     */
+    public function down()
+    {
+        $this->schema()->drop('users');
+    }
+
+    /**
      * Migrate Up.
      */
     public function up()
@@ -20,13 +28,5 @@ class CreateUsersTable extends Migration
             $table->string('username', 32);
             $table->timestamps();
         });
-    }
-
-    /**
-     * Migrate Down.
-     */
-    public function down()
-    {
-        $this->schema()->drop('users');
     }
 }

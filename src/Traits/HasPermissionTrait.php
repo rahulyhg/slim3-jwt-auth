@@ -69,42 +69,6 @@ trait HasPermissionTrait
     }
 
     /**
-     * @param Permission $permission
-     *
-     * @return bool
-     */
-    protected function hasPermission(Permission $permission): bool
-    {
-        return (bool) $this->permissions->where('name', $permission->name)->count();
-    }
-
-    /**
-     * @param Permission $permission
-     *
-     * @return bool
-     */
-    protected function hasPermissionThroughRole(Permission $permission): bool
-    {
-        foreach ($permission->roles as $role) {
-            if ($this->roles->contains($role)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * @param Permission $permission
-     *
-     * @return bool
-     */
-    protected function hasPermissionTo(Permission $permission): bool
-    {
-        return $this->hasPermissionThroughRole($permission) or $this->hasPermission($permission);
-    }
-
-    /**
      * @param Role $role
      *
      * @return bool
@@ -186,5 +150,41 @@ trait HasPermissionTrait
         }
 
         return $this;
+    }
+
+    /**
+     * @param Permission $permission
+     *
+     * @return bool
+     */
+    protected function hasPermission(Permission $permission): bool
+    {
+        return (bool) $this->permissions->where('name', $permission->name)->count();
+    }
+
+    /**
+     * @param Permission $permission
+     *
+     * @return bool
+     */
+    protected function hasPermissionThroughRole(Permission $permission): bool
+    {
+        foreach ($permission->roles as $role) {
+            if ($this->roles->contains($role)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @param Permission $permission
+     *
+     * @return bool
+     */
+    protected function hasPermissionTo(Permission $permission): bool
+    {
+        return $this->hasPermissionThroughRole($permission) or $this->hasPermission($permission);
     }
 }

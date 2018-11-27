@@ -9,6 +9,14 @@ use Illuminate\Database\Schema\Blueprint;
 class $className extends $baseClassName
 {
     /**
+     * Migrate Down.
+     */
+    public function down()
+    {
+        $this->schema()->drop('');
+    }
+
+    /**
      * Migrate Up.
      */
     public function up()
@@ -20,13 +28,5 @@ class $className extends $baseClassName
 
             $table->timestamps();
         });
-    }
-
-    /**
-     * Migrate Down.
-     */
-    public function down()
-    {
-        $this->schema()->drop('');
     }
 }

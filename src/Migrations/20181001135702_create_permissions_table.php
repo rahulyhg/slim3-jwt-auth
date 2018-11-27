@@ -9,6 +9,14 @@ use Illuminate\Database\Schema\Blueprint;
 class CreatePermissionsTable extends Migration
 {
     /**
+     * Migrate Down.
+     */
+    public function down()
+    {
+        $this->schema()->drop('permissions');
+    }
+
+    /**
      * Migrate Up.
      */
     public function up()
@@ -19,13 +27,5 @@ class CreatePermissionsTable extends Migration
             $table->string('name', 100);
             $table->timestamps();
         });
-    }
-
-    /**
-     * Migrate Down.
-     */
-    public function down()
-    {
-        $this->schema()->drop('permissions');
     }
 }

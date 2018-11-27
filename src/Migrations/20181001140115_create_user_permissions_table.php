@@ -9,6 +9,14 @@ use Illuminate\Database\Schema\Blueprint;
 class CreateUserPermissionsTable extends Migration
 {
     /**
+     * Migrate Down.
+     */
+    public function down()
+    {
+        $this->schema()->drop('users_permissions');
+    }
+
+    /**
      * Migrate Up.
      */
     public function up()
@@ -21,13 +29,5 @@ class CreateUserPermissionsTable extends Migration
             $table->foreign('permission_id')->references('id')->on('permissions');
             $table->timestamps();
         });
-    }
-
-    /**
-     * Migrate Down.
-     */
-    public function down()
-    {
-        $this->schema()->drop('users_permissions');
     }
 }
