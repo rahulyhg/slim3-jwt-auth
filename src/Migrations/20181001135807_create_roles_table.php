@@ -1,12 +1,12 @@
 <?php
 
-use App\Migrations\Migration;
+use App\Migrations\AbstractMigration;
 use Illuminate\Database\Schema\Blueprint;
 
 /**
  * Class CreateRolesTable.
  */
-class CreateRolesTable extends Migration
+class CreateRolesTable extends AbstractMigration
 {
     /**
      * Migrate Down.
